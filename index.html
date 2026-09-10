@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caique Gomes - Desenvolvedor & Apaixonado por Ciência da Computação</title>
+  <title>Caique Gomes - Logística & Tecnologia | Projeto Fênix</title>
   <style>
     * {
       margin: 0;
@@ -17,6 +17,17 @@
       color: #333;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
+    }
+
+    /* Banner em construção */
+    .build-banner {
+      background: #1a1a1a;
+      color: #ffd166;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
     }
 
     /* Header */
@@ -77,7 +88,7 @@
     }
 
     .hero h2 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       margin-bottom: 1rem;
       font-weight: 700;
     }
@@ -90,7 +101,7 @@
 
     .hero .description {
       font-size: 1.1rem;
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto 2rem;
       line-height: 1.8;
     }
@@ -147,6 +158,7 @@
       gap: 2rem;
       justify-content: center;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     .stat {
@@ -154,14 +166,15 @@
     }
 
     .stat-number {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       color: #667eea;
       font-weight: 700;
     }
 
     .stat-label {
       color: #666;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      max-width: 130px;
     }
 
     /* Skills */
@@ -207,6 +220,8 @@
       overflow: hidden;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -226,6 +241,9 @@
 
     .project-body {
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-body p {
@@ -238,6 +256,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .tag {
@@ -246,6 +265,18 @@
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       font-size: 0.85rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: #667eea;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
     }
 
     /* Contato */
@@ -313,7 +344,7 @@
       }
 
       .hero h2 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
       }
 
       .about-content {
@@ -332,6 +363,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Banner em construção -->
+  <div class="build-banner">
+    🚧 Site em construção — atualizando com novos projetos e resultados. Última atualização: set/2026.
+  </div>
+
   <!-- Header -->
   <header>
     <nav class="container">
@@ -348,10 +385,10 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h2>Olá! Eu sou Caique Gomes</h2>
-      <p class="subtitle">Desenvolvedor & Apaixonado por Ciência da Computação</p>
+      <h2>Caique Gomes</h2>
+      <p class="subtitle">Operações Logísticas + Tecnologia — Projeto Fênix</p>
       <p class="description">
-        Estudante de Ciência da Computação construindo o Projeto Fênix. Praticando lógica e estruturas de dados em Python diariamente, com foco em desenvolvimento de soluções inovadoras.
+        6+ anos de experiência em logística e operações (DHL, Amazon, Mercado Livre, Coca-Cola Andina, Estúdios Globo). Hoje curso Ciência da Computação e construo uma camada técnica e analítica sobre essa base — unindo processo, dados e código para resolver problemas de operação de verdade.
       </p>
       <a href="#contato" class="cta-button">Vamos Conversar</a>
       <a href="#sobre" class="cta-button" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Saiba Mais</a>
@@ -364,27 +401,27 @@
     <div class="about-content">
       <div>
         <p>
-          Sou um desenvolvedor apaixonado por tecnologia e resolução de problemas. Estou cursando Ciência da Computação e dedico meu tempo a aprimorar habilidades em programação, particularmente em Python, estruturas de dados e algoritmos.
+          Atuo como Assistente de Operações Logísticas no Grupo DPSP (Drogarias Pacheco), no Rio de Janeiro, com passagens por empresas como DHL, Amazon, Mercado Livre, Coca-Cola Andina e Estúdios Globo. Entendo na prática o que é fila, capacidade, gargalo e SLA.
         </p>
         <p>
-          Meu objetivo é criar soluções que façam diferença, com código limpo e eficiente. Acredito na importância de aprendizado contínuo e na colaboração com a comunidade tech.
+          Estou no segundo semestre de Ciência da Computação (EAD) e uso essa vivência operacional como ponto de partida para aprender lógica de programação, estruturas de dados e, mais à frente, desenvolvimento de soluções que automatizam e otimizam processos logísticos.
         </p>
         <p>
-          Atualmente, estou trabalhando no <strong>Projeto Fênix</strong>, uma iniciativa que combina minha paixão por programação com impacto social.
+          O <strong>Projeto Fênix</strong> é essa transição: não é abandonar a logística, é somar uma camada técnica a uma base de 6+ anos de experiência real em operação — mirando vagas de Assistente/Analista de Operações Jr com esse diferencial.
         </p>
       </div>
       <div class="stats">
         <div class="stat">
+          <div class="stat-number">6+</div>
+          <div class="stat-label">Anos em Logística</div>
+        </div>
+        <div class="stat">
           <div class="stat-number">🎓</div>
-          <div class="stat-label">Estudante CC</div>
+          <div class="stat-label">2º Semestre CC</div>
         </div>
         <div class="stat">
-          <div class="stat-number">💻</div>
-          <div class="stat-label">Dev Full-Stack</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">📚</div>
-          <div class="stat-label">Aprendizado Contínuo</div>
+          <div class="stat-number">🐍</div>
+          <div class="stat-label">Python em Prática Diária</div>
         </div>
       </div>
     </div>
@@ -395,28 +432,28 @@
     <h3>Habilidades & Tecnologias</h3>
     <div class="skills-grid">
       <div class="skill-card">
-        <h4>Python</h4>
-        <p>Linguagem principal para algoritmos, estruturas de dados e scripts</p>
+        <h4>Operações Logísticas</h4>
+        <p>Gestão de fluxo, capacidade e distribuição em grandes operações</p>
       </div>
       <div class="skill-card">
-        <h4>Web Development</h4>
-        <p>HTML, CSS, JavaScript para interfaces modernas e responsivas</p>
+        <h4>Python (em aprendizado)</h4>
+        <p>Lógica de programação, estruturas de dados e scripts</p>
       </div>
       <div class="skill-card">
-        <h4>Estruturas de Dados</h4>
-        <p>Especialista em design e implementação de estruturas eficientes</p>
+        <h4>Excel Avançado</h4>
+        <p>PROCX, SOMASE, Tabelas Dinâmicas, Power Query</p>
       </div>
       <div class="skill-card">
         <h4>Git & GitHub</h4>
-        <p>Controle de versão e colaboração em projetos</p>
+        <p>Controle de versão e organização de projetos</p>
       </div>
       <div class="skill-card">
-        <h4>Lógica de Programação</h4>
-        <p>Resolução de problemas e pensamento computacional</p>
+        <h4>HTML & CSS</h4>
+        <p>Montagem de páginas e interfaces simples</p>
       </div>
       <div class="skill-card">
         <h4>Resolução de Problemas</h4>
-        <p>Abordagem sistemática para desafios técnicos</p>
+        <p>Abordagem sistemática vinda da rotina de operação</p>
       </div>
     </div>
   </section>
@@ -427,17 +464,18 @@
     <div class="projects-grid">
       <div class="project-card">
         <div class="project-header">
-          <h4>Projeto Fênix</h4>
-          <p style="opacity: 0.9; margin: 0;">Em Desenvolvimento</p>
+          <h4>Painel de Candidaturas</h4>
+          <p style="opacity: 0.9; margin: 0;">Projeto Fênix</p>
         </div>
         <div class="project-body">
           <p>
-            Uma iniciativa inovadora que combina tecnologia e impacto social. Desenvolvendo soluções eficientes e escaláveis.
+            Ferramenta para organizar e acompanhar candidaturas de vagas durante a transição de carreira.
           </p>
           <div class="project-tags">
             <span class="tag">Python</span>
-            <span class="tag">Inovação</span>
+            <span class="tag">Organização</span>
           </div>
+          <a href="https://github.com/CaiqueGomesn/painel-candidaturas" class="project-link" target="_blank">Ver no GitHub →</a>
         </div>
       </div>
       <div class="project-card">
@@ -447,29 +485,29 @@
         </div>
         <div class="project-body">
           <p>
-            Repositório com exercícios diários de lógica e estruturas de dados em Python, melhorando continuamente minhas habilidades.
+            Repositório com exercícios diários de lógica e estruturas de dados em Python.
           </p>
           <div class="project-tags">
             <span class="tag">Python</span>
             <span class="tag">Algoritmos</span>
-            <span class="tag">Estruturas de Dados</span>
           </div>
+          <a href="https://github.com/CaiqueGomesn" class="project-link" target="_blank">Ver no GitHub →</a>
         </div>
       </div>
       <div class="project-card">
         <div class="project-header">
           <h4>Site Profissional</h4>
-          <p style="opacity: 0.9; margin: 0;">Portfólio</p>
+          <p style="opacity: 0.9; margin: 0;">Este site</p>
         </div>
         <div class="project-body">
           <p>
-            Um site responsivo e moderno para apresentar minha jornada, projetos e experiências na área de desenvolvimento.
+            Site responsivo em HTML/CSS puro, construído e mantido por mim, em constante atualização.
           </p>
           <div class="project-tags">
             <span class="tag">HTML</span>
             <span class="tag">CSS</span>
-            <span class="tag">Design</span>
           </div>
+          <a href="https://github.com/CaiqueGomesn/caiquegomesn.github.io" class="project-link" target="_blank">Ver no GitHub →</a>
         </div>
       </div>
     </div>
@@ -479,7 +517,7 @@
   <section id="contato" class="container contact-section">
     <h3>Vamos Conversar!</h3>
     <p>
-      Estou sempre aberto a colaborações, discussões sobre tecnologia e novas oportunidades. Entre em contato comigo através dos canais abaixo.
+      Aberto a oportunidades de Assistente/Analista de Operações Logísticas Jr e conversas sobre tecnologia aplicada a operações.
     </p>
     <div class="contact-links">
       <a href="https://github.com/CaiqueGomesn" class="contact-link" target="_blank">
@@ -491,15 +529,12 @@
       <a href="mailto:caique2008gomes@gmail.com" class="contact-link">
         <span>✉️</span> Email
       </a>
-      <a href="https://discord.com/users/caique.2026" class="contact-link" target="_blank">
-        <span>✉️</span> Discord
-      </a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Caique Gomes. Todos os direitos reservados. | Desenvolvido com ❤️ em código</p>
+    <p>&copy; 2026 Caique Gomes. Todos os direitos reservados. | Desenvolvido com ❤️ em código</p>
   </footer>
 </body>
 </html>

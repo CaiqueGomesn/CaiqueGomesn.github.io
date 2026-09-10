@@ -2,11 +2,504 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Caique Gomes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caique Gomes - Desenvolvedor & Apaixonado por Ciência da Computação</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #667eea;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin: 0 0.5rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    section {
+      background: white;
+      margin: 3rem 0;
+      padding: 3rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    section h3 {
+      font-size: 2rem;
+      color: #667eea;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    /* Sobre */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      color: #667eea;
+      font-weight: 700;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border-left: 4px solid #667eea;
+      transition: transform 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h4 {
+      color: #667eea;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem;
+    }
+
+    .project-header h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-body p {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: #667eea;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* Contato */
+    .contact-section {
+      text-align: center;
+    }
+
+    .contact-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .contact-link:hover {
+      color: #764ba2;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        margin: 2rem 0;
+        padding: 2rem 1rem;
+      }
+
+      .stats {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Caique Gomes</h1>
-  <p>Estudante de Ciência da Computação, construindo o Projeto Fênix.</p>
-  <p>Praticando lógica e estruturas de dados em Python, todo dia.</p>
+  <!-- Header -->
+  <header>
+    <nav class="container">
+      <h1>Caique Gomes</h1>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>Olá! Eu sou Caique Gomes</h2>
+      <p class="subtitle">Desenvolvedor & Apaixonado por Ciência da Computação</p>
+      <p class="description">
+        Estudante de Ciência da Computação construindo o Projeto Fênix. Praticando lógica e estruturas de dados em Python diariamente, com foco em desenvolvimento de soluções inovadoras.
+      </p>
+      <a href="#contato" class="cta-button">Vamos Conversar</a>
+      <a href="#sobre" class="cta-button" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Saiba Mais</a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="container">
+    <h3>Sobre Mim</h3>
+    <div class="about-content">
+      <div>
+        <p>
+          Sou um desenvolvedor apaixonado por tecnologia e resolução de problemas. Estou cursando Ciência da Computação e dedico meu tempo a aprimorar habilidades em programação, particularmente em Python, estruturas de dados e algoritmos.
+        </p>
+        <p>
+          Meu objetivo é criar soluções que façam diferença, com código limpo e eficiente. Acredito na importância de aprendizado contínuo e na colaboração com a comunidade tech.
+        </p>
+        <p>
+          Atualmente, estou trabalhando no <strong>Projeto Fênix</strong>, uma iniciativa que combina minha paixão por programação com impacto social.
+        </p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">🎓</div>
+          <div class="stat-label">Estudante CC</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">💻</div>
+          <div class="stat-label">Dev Full-Stack</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">📚</div>
+          <div class="stat-label">Aprendizado Contínuo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section id="skills" class="container">
+    <h3>Habilidades & Tecnologias</h3>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Python</h4>
+        <p>Linguagem principal para algoritmos, estruturas de dados e scripts</p>
+      </div>
+      <div class="skill-card">
+        <h4>Web Development</h4>
+        <p>HTML, CSS, JavaScript para interfaces modernas e responsivas</p>
+      </div>
+      <div class="skill-card">
+        <h4>Estruturas de Dados</h4>
+        <p>Especialista em design e implementação de estruturas eficientes</p>
+      </div>
+      <div class="skill-card">
+        <h4>Git & GitHub</h4>
+        <p>Controle de versão e colaboração em projetos</p>
+      </div>
+      <div class="skill-card">
+        <h4>Lógica de Programação</h4>
+        <p>Resolução de problemas e pensamento computacional</p>
+      </div>
+      <div class="skill-card">
+        <h4>Resolução de Problemas</h4>
+        <p>Abordagem sistemática para desafios técnicos</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos -->
+  <section id="projetos" class="container">
+    <h3>Projetos Destacados</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header">
+          <h4>Projeto Fênix</h4>
+          <p style="opacity: 0.9; margin: 0;">Em Desenvolvimento</p>
+        </div>
+        <div class="project-body">
+          <p>
+            Uma iniciativa inovadora que combina tecnologia e impacto social. Desenvolvendo soluções eficientes e escaláveis.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Inovação</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <h4>Prática de Algoritmos</h4>
+          <p style="opacity: 0.9; margin: 0;">Aprendizado Contínuo</p>
+        </div>
+        <div class="project-body">
+          <p>
+            Repositório com exercícios diários de lógica e estruturas de dados em Python, melhorando continuamente minhas habilidades.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Algoritmos</span>
+            <span class="tag">Estruturas de Dados</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header">
+          <h4>Site Profissional</h4>
+          <p style="opacity: 0.9; margin: 0;">Portfólio</p>
+        </div>
+        <div class="project-body">
+          <p>
+            Um site responsivo e moderno para apresentar minha jornada, projetos e experiências na área de desenvolvimento.
+          </p>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="container contact-section">
+    <h3>Vamos Conversar!</h3>
+    <p>
+      Estou sempre aberto a colaborações, discussões sobre tecnologia e novas oportunidades. Entre em contato comigo através dos canais abaixo.
+    </p>
+    <div class="contact-links">
+      <a href="https://github.com/CaiqueGomesn" class="contact-link" target="_blank">
+        <span>🔗</span> GitHub
+      </a>
+      <a href="https://linkedin.com/in/caique-gomes" class="contact-link" target="_blank">
+        <span>💼</span> LinkedIn
+      </a>
+      <a href="mailto:caique@example.com" class="contact-link">
+        <span>✉️</span> Email
+      </a>
+      <a href="https://twitter.com" class="contact-link" target="_blank">
+        <span>𝕏</span> Twitter
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Caique Gomes. Todos os direitos reservados. | Desenvolvido com ❤️ em código</p>
+  </footer>
 </body>
 </html>

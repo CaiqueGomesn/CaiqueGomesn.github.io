@@ -14,12 +14,26 @@
       --surface: #ffffff;
       --soft: #f4f6fb;
       --dark: #171a2b;
+      --route-line: #c7ccd9;
+      --route-neutral: #667085;
+      --route-accent: #667eea;
+      --shadow: rgba(21, 25, 59, 0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #edf0ff;
+        --muted: #c2c8dc;
+        --surface: #20243a;
+        --soft: #2b3049;
+        --route-line: #596078;
+        --route-neutral: #b4bdd3;
+        --shadow: rgba(0, 0, 0, 0.3);
+      }
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -27,102 +41,52 @@
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       min-height: 100vh;
     }
-
     a { color: inherit; }
-
-    .container {
-      width: min(1120px, calc(100% - 2rem));
-      margin: 0 auto;
-    }
+    .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(15, 17, 30, 0.96);
-      color: #fff;
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(15, 17, 30, 0.96); color: #fff;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
     }
-
-    nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     nav h1 { font-size: 1.5rem; white-space: nowrap; }
-
-    nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
+    nav ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1.5rem; list-style: none; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
     nav a:hover, nav a:focus-visible { color: #b9c3ff; }
 
     .hero {
-      color: #fff;
-      text-align: center;
-      padding: clamp(5rem, 12vw, 8rem) 0;
+      color: #fff; text-align: center; padding: clamp(5rem, 12vw, 8rem) 0;
       background: linear-gradient(135deg, rgba(42, 49, 132, 0.52), rgba(64, 27, 92, 0.58));
     }
-
     .hero h2 { font-size: clamp(2.4rem, 7vw, 4.3rem); line-height: 1.1; margin-bottom: 1rem; }
     .hero .subtitle { font-size: clamp(1.05rem, 2.5vw, 1.35rem); font-weight: 600; margin-bottom: 1.5rem; }
     .hero .description { max-width: 760px; margin: 0 auto 2rem; font-size: 1.08rem; }
-
     .button {
-      display: inline-block;
-      margin: 0.35rem;
-      padding: 0.85rem 1.7rem;
-      border: 2px solid #fff;
-      border-radius: 999px;
-      background: #fff;
-      color: #3443a2;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: inline-block; margin: 0.35rem; padding: 0.85rem 1.7rem;
+      border: 2px solid #fff; border-radius: 999px; background: #fff; color: #3443a2;
+      text-decoration: none; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .button.secondary { background: rgba(255, 255, 255, 0.12); color: #fff; }
     .button:hover, .button:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); }
 
     section.card-section {
-      margin: 2.5rem auto;
-      padding: clamp(2rem, 5vw, 3.5rem);
-      background: var(--surface);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(21, 25, 59, 0.16);
+      margin: 2.5rem auto; padding: clamp(2rem, 5vw, 3.5rem);
+      background: var(--surface); border-radius: 16px; box-shadow: 0 8px 24px var(--shadow);
     }
-
     section h3 { color: #4f5fc3; text-align: center; font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 2rem; }
-
     .about-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center; }
     .about-copy p { margin-bottom: 1rem; font-size: 1.05rem; }
-
     .stats { display: grid; gap: 1rem; }
     .stat { padding: 1.2rem; text-align: center; background: var(--soft); border-radius: 12px; border-top: 4px solid var(--primary); }
     .stat-number { display: block; color: #4f5fc3; font-size: 2rem; font-weight: 800; }
     .stat-label { color: var(--muted); font-weight: 600; }
-
     .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .skill-card, .project-card { background: var(--soft); border-radius: 12px; overflow: hidden; }
     .skill-card { padding: 1.35rem; border-left: 4px solid var(--primary); }
     .skill-card h4 { color: #4f5fc3; margin-bottom: 0.5rem; }
     .skill-card p, .project-body p { color: var(--muted); }
-
-    .project-card { display: flex; flex-direction: column; box-shadow: 0 3px 12px rgba(21, 25, 59, 0.1); }
+    .project-card { display: flex; flex-direction: column; box-shadow: 0 3px 12px var(--shadow); }
     .project-header { padding: 1.35rem; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
     .project-header h4 { font-size: 1.2rem; }
     .project-body { display: flex; flex: 1; flex-direction: column; gap: 1rem; padding: 1.35rem; }
@@ -131,26 +95,72 @@
     .project-link { margin-top: auto; color: #4354b6; font-weight: 700; text-decoration: none; }
     .project-link:hover, .project-link:focus-visible { text-decoration: underline; }
 
+    /* A Rota: linha, paradas e cartões da narrativa profissional. */
+    .route-intro { max-width: 700px; margin: -0.75rem auto 2.5rem; color: var(--muted); text-align: center; }
+    .career-timeline { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .career-timeline::before {
+      content: ""; position: absolute; z-index: 0; top: 2rem; left: 10%; right: 10%; height: 3px;
+      background: var(--route-line);
+    }
+    .route-stop { position: relative; z-index: 1; }
+    .route-marker {
+      width: 1.25rem; height: 1.25rem; margin: 1.4rem auto -0.6rem;
+      border: 4px solid var(--surface); border-radius: 50%; background: var(--route-neutral);
+      box-shadow: 0 0 0 3px var(--route-line);
+    }
+    .route-card {
+      width: 100%; border: 1px solid var(--route-line); border-radius: 14px; background: var(--soft);
+      color: var(--ink); text-align: left; cursor: pointer; box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .route-card:hover, .route-card:focus-visible { transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow); }
+    .route-card:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+    .route-card.active { border-color: var(--route-neutral); }
+    .route-stop--current .route-marker { background: var(--route-accent); box-shadow: 0 0 0 3px var(--route-accent); }
+    .route-stop--current .route-card { border: 2px solid var(--route-accent); background: linear-gradient(145deg, var(--soft), rgba(102, 126, 234, 0.16)); }
+    .route-card-header { padding: 1.35rem; }
+    .route-kicker { display: block; margin-bottom: 0.35rem; color: var(--route-neutral); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .route-stop--current .route-kicker { color: var(--route-accent); }
+    .route-card h4 { margin-bottom: 0.35rem; font-size: 1.2rem; }
+    .route-subtitle { color: var(--muted); font-size: 0.95rem; }
+    .route-details { display: grid; grid-template-rows: 0fr; padding: 0 1.35rem; transition: grid-template-rows 0.3s ease, padding 0.3s ease; }
+    .route-details > div { overflow: hidden; }
+    .route-card.active .route-details { grid-template-rows: 1fr; padding: 0 1.35rem 1.35rem; }
+    .route-details p { color: var(--muted); font-size: 0.95rem; }
+
     .contact-section { text-align: center; }
     .contact-section > p { max-width: 700px; margin: 0 auto 1.8rem; color: var(--muted); font-size: 1.08rem; }
     .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
     .contact-link { color: #4354b6; font-weight: 700; text-decoration: none; }
     .contact-link:hover, .contact-link:focus-visible { color: var(--secondary); text-decoration: underline; }
-
     footer { margin-top: 3rem; padding: 2rem 1rem; color: #fff; text-align: center; background: rgba(15, 17, 30, 0.96); }
+
+    /* Estado inicial da animação; o JS adiciona .is-visible quando entra no viewport. */
+    .route-stop { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .route-stop.is-visible { opacity: 1; transform: translateY(0); }
+    .route-stop:nth-child(2) { transition-delay: 0.12s; }
+    .route-stop:nth-child(3) { transition-delay: 0.24s; }
 
     @media (max-width: 800px) {
       nav { flex-direction: column; justify-content: center; padding: 1rem 0; }
       nav ul { justify-content: center; gap: 0.8rem 1rem; }
       .about-content, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: repeat(3, 1fr); }
+      .career-timeline { grid-template-columns: 1fr; gap: 0.75rem; }
+      .career-timeline::before { top: 1.4rem; bottom: 1.4rem; left: 0.6rem; right: auto; width: 3px; height: auto; }
+      .route-stop { display: grid; grid-template-columns: 2rem 1fr; column-gap: 0.75rem; }
+      .route-marker { grid-column: 1; grid-row: 1; margin: 1.4rem auto 0; }
+      .route-card { grid-column: 2; grid-row: 1; }
     }
-
     @media (max-width: 500px) {
       nav ul { font-size: 0.9rem; }
       .hero { padding: 4rem 0; }
       .stats { grid-template-columns: 1fr; }
       section.card-section { margin: 1.5rem auto; padding: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .route-stop, .route-details, .route-card, .button { transition: none; }
     }
   </style>
 </head>
@@ -160,6 +170,7 @@
       <h1>Caique Gomes</h1>
       <ul>
         <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#rota">A Rota</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -175,6 +186,34 @@
         <p class="description">Estudante de Ciência da Computação com foco em Análise de Dados e automação com Python. Construo essa base técnica sobre 6+ anos de experiência real em operações de alto volume (DHL, Amazon, Mercado Livre), onde aprendi a lidar com dado, processo e escala na prática — hoje aplico isso para resolver problemas com código.</p>
         <a class="button" href="#contato">Vamos Conversar</a>
         <a class="button secondary" href="#sobre">Saiba Mais</a>
+      </div>
+    </section>
+
+    <section id="rota" class="card-section container">
+      <h3>A Rota</h3>
+      <p class="route-intro">Uma jornada construída em operações de alto volume e que agora segue em direção à tecnologia, aos dados e à automação.</p>
+      <div class="career-timeline" aria-label="Timeline da carreira de Caique Gomes">
+        <article class="route-stop">
+          <div class="route-marker" aria-hidden="true"></div>
+          <button class="route-card" type="button" aria-expanded="false" aria-controls="route-details-1">
+            <div class="route-card-header"><span class="route-kicker">Parada 01</span><h4>Logística</h4><p class="route-subtitle">Experiência operacional consolidada</p></div>
+            <div class="route-details" id="route-details-1"><div><p>DHL, Amazon e Mercado Livre formaram minha base em operações de alto volume. Aprendi a trabalhar com ritmo, precisão, processos e escala, mantendo o foco na execução e nos resultados.</p></div></div>
+          </button>
+        </article>
+        <article class="route-stop">
+          <div class="route-marker" aria-hidden="true"></div>
+          <button class="route-card" type="button" aria-expanded="false" aria-controls="route-details-2">
+            <div class="route-card-header"><span class="route-kicker">Parada 02</span><h4>Indústria e mídia</h4><p class="route-subtitle">Diversidade de contextos operacionais</p></div>
+            <div class="route-details" id="route-details-2"><div><p>Na Coca-Cola Andina e nos Estúdios Globo, conheci contextos diferentes e desenvolvi adaptação. Essa passagem ampliou minha visão sobre fluxos, equipes, prioridades e resolução de problemas.</p></div></div>
+          </button>
+        </article>
+        <article class="route-stop route-stop--current">
+          <div class="route-marker" aria-hidden="true"></div>
+          <button class="route-card" type="button" aria-expanded="false" aria-controls="route-details-3">
+            <div class="route-card-header"><span class="route-kicker">Parada 03 · Atual</span><h4>Pacheco / atual</h4><p class="route-subtitle">Rumo a operações + dados</p></div>
+            <div class="route-details" id="route-details-3"><div><p>Na Drogarias Pacheco, conecto a experiência operacional à graduação em Ciência da Computação. É o ponto central da transição: transformar conhecimento de processo em análises, automações e soluções com código.</p></div></div>
+          </button>
+        </article>
       </div>
     </section>
 
@@ -209,18 +248,9 @@
     <section id="projetos" class="card-section container">
       <h3>Projetos</h3>
       <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-header"><h4>Painel de Candidaturas</h4></div>
-          <div class="project-body"><p>CLI em Python para rastreamento de candidaturas a vagas.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Organização</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/painel-candidaturas" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
-        </article>
-        <article class="project-card">
-          <div class="project-header"><h4>Prática de Algoritmos</h4></div>
-          <div class="project-body"><p>Repositório com exercícios de lógica e estruturas de dados em Python.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Algoritmos</span></div><a class="project-link" href="https://github.com/CaiqueGomesn" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
-        </article>
-        <article class="project-card">
-          <div class="project-header"><h4>Site Profissional</h4></div>
-          <div class="project-body"><p>Este site, responsivo, construído e mantido por mim.</p><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/caiquegomesn.github.io" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
-        </article>
+        <article class="project-card"><div class="project-header"><h4>Painel de Candidaturas</h4></div><div class="project-body"><p>CLI em Python para rastreamento de candidaturas a vagas.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Organização</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/painel-candidaturas" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div></article>
+        <article class="project-card"><div class="project-header"><h4>Prática de Algoritmos</h4></div><div class="project-body"><p>Repositório com exercícios de lógica e estruturas de dados em Python.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Algoritmos</span></div><a class="project-link" href="https://github.com/CaiqueGomesn" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div></article>
+        <article class="project-card"><div class="project-header"><h4>Site Profissional</h4></div><div class="project-body"><p>Este site, responsivo, construído e mantido por mim.</p><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/caiquegomesn.github.io" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div></article>
       </div>
     </section>
 
@@ -236,5 +266,40 @@
   </main>
 
   <footer><p>© 2026 Caique Gomes. Todos os direitos reservados.</p></footer>
+
+  <script>
+    // Accordion acessível: apenas um ponto da rota fica aberto por vez.
+    document.querySelectorAll('.route-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const wasActive = card.classList.contains('active');
+        document.querySelectorAll('.route-card').forEach((otherCard) => {
+          otherCard.classList.remove('active');
+          otherCard.setAttribute('aria-expanded', 'false');
+        });
+        if (!wasActive) {
+          card.classList.add('active');
+          card.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Revela as paradas quando entram na tela, sem dependências externas.
+    const stops = document.querySelectorAll('.route-stop');
+    const revealStops = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(revealStops, { threshold: 0.2 });
+      stops.forEach((stop) => observer.observe(stop));
+    } else {
+      stops.forEach((stop) => stop.classList.add('is-visible'));
+    }
+  </script>
 </body>
 </html>

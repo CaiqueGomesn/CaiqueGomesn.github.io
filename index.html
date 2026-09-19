@@ -39,64 +39,78 @@
       <div class="section-heading">
         <p class="eyebrow">A Rota · PONTO</p>
         <h2>Da operação à decisão</h2>
-        <p>Uma visão simples da plataforma conceito PONTO: dados operacionais integrados para transformar sinais dispersos em ação.</p>
+        <p>Uma visão da plataforma conceito PONTO: integra dados operacionais para transformar informação dispersa em ação inteligente.</p>
       </div>
 
-      <!-- Diagrama SVG acessível e interativo: os nós são buttons HTML sobrepostos às formas SVG. -->
-      <div class="ponto-diagram" data-ponto-diagram>
-        <svg class="ponto-connections" viewBox="0 0 1000 430" role="img" aria-labelledby="ponto-diagram-title ponto-diagram-desc" preserveAspectRatio="none">
-          <title id="ponto-diagram-title">Arquitetura do projeto PONTO</title>
-          <desc id="ponto-diagram-desc">Três fontes de entrada alimentam uma camada central de integração, que produz decisões precisas e automação.</desc>
+      <div class="diagram-shell" data-diagram-shell>
+        <svg class="diagram-svg" viewBox="0 0 1200 440" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <marker id="ponto-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-              <path d="M0 0 L8 4 L0 8" fill="none" stroke="currentColor" stroke-width="1.5" />
+            <marker id="flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
             </marker>
           </defs>
-          <g class="connection-lines" aria-hidden="true">
-            <path class="connection" d="M205 92 C330 92 335 190 438 214" marker-end="url(#ponto-arrow)" />
-            <path class="connection" d="M205 215 C315 215 350 215 438 215" marker-end="url(#ponto-arrow)" />
-            <path class="connection" d="M205 338 C330 338 335 240 438 216" marker-end="url(#ponto-arrow)" />
-            <path class="connection" d="M562 215 C665 215 695 112 795 112" marker-end="url(#ponto-arrow)" />
-            <path class="connection" d="M562 215 C675 215 700 322 795 322" marker-end="url(#ponto-arrow) />
+
+          <g class="flow-layer">
+            <path class="flow-line" d="M 255 100 C 340 100, 370 180, 470 205" marker-end="url(#flow-arrow)"/>
+            <path class="flow-line" d="M 255 220 C 345 220, 385 220, 470 220" marker-end="url(#flow-arrow)"/>
+            <path class="flow-line" d="M 255 340 C 340 340, 370 258, 470 235" marker-end="url(#flow-arrow)"/>
+            <path class="flow-line" d="M 710 220 C 800 220, 850 140, 945 140" marker-end="url(#flow-arrow)"/>
+            <path class="flow-line" d="M 710 220 C 810 220, 850 300, 945 300" marker-end="url(#flow-arrow)"/>
           </g>
         </svg>
 
-        <div class="ponto-nodes ponto-inputs" aria-label="Fontes de entrada">
-          <button class="ponto-node node-wms" type="button" data-ponto-node="wms" aria-expanded="false" aria-controls="ponto-detail">
-            <span class="node-kicker">Entrada 01</span><strong>WMS</strong><span class="node-caption">Estoque e fluxo</span>
-          </button>
-          <button class="ponto-node node-qms" type="button" data-ponto-node="qms" aria-expanded="false" aria-controls="ponto-detail">
-            <span class="node-kicker">Entrada 02</span><strong>QMS</strong><span class="node-caption">Qualidade e desvios</span>
-          </button>
-          <button class="ponto-node node-operacao" type="button" data-ponto-node="operacao" aria-expanded="false" aria-controls="ponto-detail">
-            <span class="node-kicker">Entrada 03</span><strong>Operação</strong><span class="node-caption">Rotina e contexto</span>
-          </button>
-        </div>
-
-        <button class="ponto-node ponto-core" type="button" data-ponto-node="integracao" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Inteligência</span><strong>Análise em tempo real</strong><span class="node-caption">Integração</span>
+        <button class="ponto-node node-left node-wms" type="button" data-ponto-node="wms" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Entrada 01</span>
+          <strong>WMS</strong>
+          <span class="node-caption">Estoque e fluxo</span>
         </button>
 
-        <div class="ponto-nodes ponto-outputs" aria-label="Saídas">
-          <button class="ponto-node node-decisoes" type="button" data-ponto-node="decisoes" aria-expanded="false" aria-controls="ponto-detail">
-            <span class="node-kicker">Saída 01</span><strong>Decisões precisas</strong><span class="node-caption">Clareza para agir</span>
-          </button>
-          <button class="ponto-node node-automacao" type="button" data-ponto-node="automacao" aria-expanded="false" aria-controls="ponto-detail">
-            <span class="node-kicker">Saída 02</span><strong>Automação</strong><span class="node-caption">Menos esforço manual</span>
-          </button>
-        </div>
+        <button class="ponto-node node-left node-qms" type="button" data-ponto-node="qms" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Entrada 02</span>
+          <strong>QMS</strong>
+          <span class="node-caption">Qualidade e desvios</span>
+        </button>
+
+        <button class="ponto-node node-left node-operacao" type="button" data-ponto-node="operacao" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Entrada 03</span>
+          <strong>Operação</strong>
+          <span class="node-caption">Rotina e contexto</span>
+        </button>
+
+        <button class="ponto-node node-core" type="button" data-ponto-node="integracao" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Núcleo</span>
+          <strong>Análise em tempo real</strong>
+          <span class="node-caption">Integração</span>
+        </button>
+
+        <button class="ponto-node node-right node-decisao" type="button" data-ponto-node="decisoes" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Saída 01</span>
+          <strong>Decisões precisas</strong>
+          <span class="node-caption">Clareza para agir</span>
+        </button>
+
+        <button class="ponto-node node-right node-automacao" type="button" data-ponto-node="automacao" aria-expanded="false" aria-controls="ponto-detail">
+          <span class="node-kicker">Saída 02</span>
+          <strong>Automação</strong>
+          <span class="node-caption">Menos esforço manual</span>
+        </button>
       </div>
 
       <aside class="ponto-detail" id="ponto-detail" aria-live="polite" hidden>
-        <div><span class="detail-kicker" data-detail-kicker></span><h3 data-detail-title></h3><p data-detail-copy></p></div>
+        <div>
+          <span class="detail-kicker" data-detail-kicker></span>
+          <h3 data-detail-title></h3>
+          <p data-detail-copy></p>
+        </div>
         <button class="detail-close" type="button" aria-label="Fechar detalhes">×</button>
       </aside>
+
       <p class="diagram-hint">Selecione um ponto da arquitetura para entender seu papel.</p>
     </section>
 
     <section class="card-section container" id="sobre">
       <div class="section-heading"><p class="eyebrow">Contexto</p><h2>Sobre mim</h2></div>
-      <div class="about-grid"><div><p>Atuo como Assistente de Operações Logísticas no Grupo DPSP, onde acompanho de perto processos, fluxos e os desafios de transformar informação em rotina eficiente.</p><p>Minha transição para dados nasce desse lugar: entender o problema na origem e construir ferramentas que ajudem pessoas a decidir melhor.</p></div><div class="stats"><div><strong>6+</strong><span>anos em operações</span></div><div><strong>Python</strong><span>em construção</span></div></div></div>
+      <div class="about-grid"><div><p>Atuo como Assistente de Operações Logísticas no Grupo DPSP, onde acompanho de perto processos, fluxos e desafios de transformar informação em rotina eficiente.</p><p>Minha transição para dados nasce desse ponto: entender o problema na origem e criar soluções que ajudem pessoas a decidir melhor.</p></div><div class="stats"><div><strong>6+</strong><span>anos em operações</span></div><div><strong>Python</strong><span>em construção</span></div></div></div>
     </section>
 
     <section class="card-section container" id="habilidades"><div class="section-heading"><p class="eyebrow">Base técnica</p><h2>Habilidades</h2></div><div class="simple-grid"><article><h3>Python</h3><p>Lógica de programação, estruturas de dados e automação em aprendizado contínuo.</p></article><article><h3>Análise de dados</h3><p>Organização, leitura e comunicação de informações para apoiar decisões.</p></article><article><h3>Visão operacional</h3><p>Experiência prática para identificar gargalos e oportunidades reais.</p></article></div></section>
@@ -105,7 +119,9 @@
 
     <section class="card-section container contact-section" id="contato"><div class="section-heading"><p class="eyebrow">Contato</p><h2>Vamos conversar?</h2><p>Aberto a oportunidades para aprender, colaborar e transformar problemas operacionais em soluções com dados.</p></div><div class="contact-links"><a href="mailto:caiquegomesn@gmail.com">E-mail</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/CaiqueGomesn" target="_blank" rel="noreferrer">GitHub</a></div></section>
   </main>
+
   <footer><p>© 2026 Caique Gomes. Todos os direitos reservados.</p></footer>
+
   <script src="script.js" defer></script>
 </body>
 </html>

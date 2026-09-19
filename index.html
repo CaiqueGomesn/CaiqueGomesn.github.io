@@ -1,136 +1,240 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio profissional de Caique Gomes, estudante de Ciência da Computação com foco em Análise de Dados e Automação com Python.">
   <title>Caique Gomes - Análise de Dados & Automação | Ciência da Computação</title>
   <style>
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --ink: #20243a;
+      --muted: #4d556b;
+      --surface: #ffffff;
+      --soft: #f4f6fb;
+      --dark: #171a2b;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
-    .build-banner { background: #1a1a1a; color: #ffd166; text-align: center; padding: 0.6rem 1rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.3px; }
-    header { background: rgba(0, 0, 0, 0.8); color: white; padding: 2rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
-    nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-    nav h1 { font-size: 1.8rem; font-weight: 700; }
-    nav ul { display: flex; list-style: none; gap: 2rem; }
-    nav a { color: white; text-decoration: none; transition: color 0.3s; font-weight: 500; }
-    nav a:hover { color: #667eea; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .hero { color: white; padding: 6rem 2rem; text-align: center; animation: fadeIn 1s ease-in; }
-    .hero h2 { font-size: 3.2rem; margin-bottom: 1rem; font-weight: 700; }
-    .hero .subtitle { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9; }
-    .hero .description { font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem; line-height: 1.8; }
-    .cta-button { display: inline-block; background: white; color: #667eea; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; margin: 0 0.5rem; }
-    .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-    section { background: white; margin: 3rem 0; padding: 3rem 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); }
-    section h3 { font-size: 2rem; color: #667eea; margin-bottom: 2rem; text-align: center; }
-    .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
-    .about-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
-    .stats { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-number { font-size: 2.2rem; color: #667eea; font-weight: 700; }
-    .stat-label { color: #666; font-size: 0.9rem; max-width: 130px; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-    .skill-card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; border-left: 4px solid #667eea; transition: transform 0.3s; }
-    .skill-card:hover { transform: translateY(-5px); }
-    .skill-card h4 { color: #667eea; margin-bottom: 0.5rem; }
-    .skill-card p { color: #666; font-size: 0.95rem; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .project-card { background: #f8f9fa; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s; display: flex; flex-direction: column; }
-    .project-card:hover { transform: translateY(-5px); }
-    .project-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; }
-    .project-header h4 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .project-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-    .project-body p { color: #666; margin-bottom: 1rem; font-size: 0.95rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-    .tag { background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; }
-    .project-link { margin-top: auto; color: #667eea; font-weight: 600; text-decoration: none; font-size: 0.95rem; }
-    .project-link:hover { text-decoration: underline; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 17, 30, 0.96);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    nav h1 { font-size: 1.5rem; white-space: nowrap; }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover, nav a:focus-visible { color: #b9c3ff; }
+
+    .hero {
+      color: #fff;
+      text-align: center;
+      padding: clamp(5rem, 12vw, 8rem) 0;
+      background: linear-gradient(135deg, rgba(42, 49, 132, 0.52), rgba(64, 27, 92, 0.58));
+    }
+
+    .hero h2 { font-size: clamp(2.4rem, 7vw, 4.3rem); line-height: 1.1; margin-bottom: 1rem; }
+    .hero .subtitle { font-size: clamp(1.05rem, 2.5vw, 1.35rem); font-weight: 600; margin-bottom: 1.5rem; }
+    .hero .description { max-width: 760px; margin: 0 auto 2rem; font-size: 1.08rem; }
+
+    .button {
+      display: inline-block;
+      margin: 0.35rem;
+      padding: 0.85rem 1.7rem;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      background: #fff;
+      color: #3443a2;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button.secondary { background: rgba(255, 255, 255, 0.12); color: #fff; }
+    .button:hover, .button:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25); }
+
+    section.card-section {
+      margin: 2.5rem auto;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      background: var(--surface);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(21, 25, 59, 0.16);
+    }
+
+    section h3 { color: #4f5fc3; text-align: center; font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 2rem; }
+
+    .about-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center; }
+    .about-copy p { margin-bottom: 1rem; font-size: 1.05rem; }
+
+    .stats { display: grid; gap: 1rem; }
+    .stat { padding: 1.2rem; text-align: center; background: var(--soft); border-radius: 12px; border-top: 4px solid var(--primary); }
+    .stat-number { display: block; color: #4f5fc3; font-size: 2rem; font-weight: 800; }
+    .stat-label { color: var(--muted); font-weight: 600; }
+
+    .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .skill-card, .project-card { background: var(--soft); border-radius: 12px; overflow: hidden; }
+    .skill-card { padding: 1.35rem; border-left: 4px solid var(--primary); }
+    .skill-card h4 { color: #4f5fc3; margin-bottom: 0.5rem; }
+    .skill-card p, .project-body p { color: var(--muted); }
+
+    .project-card { display: flex; flex-direction: column; box-shadow: 0 3px 12px rgba(21, 25, 59, 0.1); }
+    .project-header { padding: 1.35rem; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+    .project-header h4 { font-size: 1.2rem; }
+    .project-body { display: flex; flex: 1; flex-direction: column; gap: 1rem; padding: 1.35rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag { padding: 0.25rem 0.7rem; border-radius: 999px; background: #dfe4ff; color: #3546a2; font-size: 0.85rem; font-weight: 700; }
+    .project-link { margin-top: auto; color: #4354b6; font-weight: 700; text-decoration: none; }
+    .project-link:hover, .project-link:focus-visible { text-decoration: underline; }
+
     .contact-section { text-align: center; }
-    .contact-section p { font-size: 1.1rem; margin-bottom: 2rem; color: #666; }
-    .contact-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
-    .contact-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #667eea; text-decoration: none; font-weight: 600; transition: color 0.3s; }
-    .contact-link:hover { color: #764ba2; }
-    footer { background: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 1rem; }
-      nav ul { gap: 1rem; }
-      .hero h2 { font-size: 2.3rem; }
-      .about-content { grid-template-columns: 1fr; }
-      section { margin: 2rem 0; padding: 2rem 1rem; }
-      .stats { flex-direction: column; }
+    .contact-section > p { max-width: 700px; margin: 0 auto 1.8rem; color: var(--muted); font-size: 1.08rem; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    .contact-link { color: #4354b6; font-weight: 700; text-decoration: none; }
+    .contact-link:hover, .contact-link:focus-visible { color: var(--secondary); text-decoration: underline; }
+
+    footer { margin-top: 3rem; padding: 2rem 1rem; color: #fff; text-align: center; background: rgba(15, 17, 30, 0.96); }
+
+    @media (max-width: 800px) {
+      nav { flex-direction: column; justify-content: center; padding: 1rem 0; }
+      nav ul { justify-content: center; gap: 0.8rem 1rem; }
+      .about-content, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      nav ul { font-size: 0.9rem; }
+      .hero { padding: 4rem 0; }
+      .stats { grid-template-columns: 1fr; }
+      section.card-section { margin: 1.5rem auto; padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <div class="build-banner">
-    🚧 Site em construção — atualizando com novos projetos e resultados. Última atualização: set/2026.
-  </div>
   <header>
-    <nav class="container">
+    <nav class="container" aria-label="Navegação principal">
       <h1>Caique Gomes</h1>
       <ul>
         <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#skills">Habilidades</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
   </header>
-  <section class="hero">
-    <div class="container">
-      <h2>Caique Gomes</h2>
-      <p class="subtitle">Estudante de Ciência da Computação | Análise de Dados e Automação com Python</p>
-      <p class="description">
-        Estudante de Ciência da Computação com foco em Análise de Dados e automação com Python. Construo essa base técnica sobre 6+ anos de experiência real em operações de alto volume (DHL, Amazon, Mercado Livre), onde aprendi a lidar com dado, processo e escala na prática — hoje aplico isso para resolver problemas com código.
-      </p>
-      <a href="#contato" class="cta-button">Vamos Conversar</a>
-      <a href="#sobre" class="cta-button" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white;">Saiba Mais</a>
-    </div>
-  </section>
-  <section id="sobre" class="container">
-    <h3>Sobre Mim</h3>
-    <div class="about-content">
-      <div>
-        <p>Atuo como Assistente de Operações Logísticas no Grupo DPSP (Drogarias Pacheco), no Rio de Janeiro, com passagens por empresas como DHL, Amazon, Mercado Livre, Coca-Cola Andina e Estúdios Globo.</p>
-        <p>Estou no segundo semestre de Ciência da Computação (EAD) e uso essa vivência operacional como ponto de partida para aprender lógica de programação, estruturas de dados e, mais à frente, análise de dados e automação.</p>
-        <p>O Projeto Fênix é minha transição de carreira: uso 6+ anos de vivência operacional como vantagem real para entrar em Análise de Dados e Tecnologia — não como quem começa do zero, mas como quem já entende dado de operação na prática, e agora aprende a estruturar, automatizar e analisar isso com código.</p>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Caique Gomes</h2>
+        <p class="subtitle">Estudante de Ciência da Computação | Análise de Dados e Automação com Python</p>
+        <p class="description">Estudante de Ciência da Computação com foco em Análise de Dados e automação com Python. Construo essa base técnica sobre 6+ anos de experiência real em operações de alto volume (DHL, Amazon, Mercado Livre), onde aprendi a lidar com dado, processo e escala na prática — hoje aplico isso para resolver problemas com código.</p>
+        <a class="button" href="#contato">Vamos Conversar</a>
+        <a class="button secondary" href="#sobre">Saiba Mais</a>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="stat-number">6+</div><div class="stat-label">Anos em Logística</div></div>
-        <div class="stat"><div class="stat-number">🎓</div><div class="stat-label">2º Semestre CC</div></div>
-        <div class="stat"><div class="stat-number">🐍</div><div class="stat-label">Python em Prática Diária</div></div>
+    </section>
+
+    <section id="sobre" class="card-section container">
+      <h3>Sobre Mim</h3>
+      <div class="about-content">
+        <div class="about-copy">
+          <p>Atuo como Assistente de Operações Logísticas no Grupo DPSP (Drogarias Pacheco), no Rio de Janeiro, com passagens por DHL, Amazon, Mercado Livre, Coca-Cola Andina e Estúdios Globo.</p>
+          <p>Estou no segundo semestre de Ciência da Computação (EAD) e uso essa vivência operacional como ponto de partida para aprender lógica de programação, estruturas de dados e, mais à frente, análise de dados e automação.</p>
+          <p>O Projeto Fênix é minha transição de carreira: uso 6+ anos de vivência operacional como vantagem real para entrar em Análise de Dados e Tecnologia — não como quem começa do zero, mas como quem já entende dado de operação na prática, e agora aprende a estruturar, automatizar e analisar isso com código.</p>
+        </div>
+        <div class="stats" aria-label="Estatísticas profissionais">
+          <div class="stat"><span class="stat-number">6+</span><span class="stat-label">Anos em Operações</span></div>
+          <div class="stat"><span class="stat-number">2º</span><span class="stat-label">Semestre CC</span></div>
+          <div class="stat"><span class="stat-number">🐍</span><span class="stat-label">Python em Prática Diária</span></div>
+        </div>
       </div>
-    </div>
-  </section>
-  <section id="skills" class="container">
-    <h3>Habilidades & Tecnologias</h3>
-    <div class="skills-grid">
-      <div class="skill-card"><h4>Python (em aprendizado)</h4><p>Lógica de programação, estruturas de dados e scripts</p></div>
-      <div class="skill-card"><h4>Operações Logísticas</h4><p>Gestão de fluxo, capacidade e distribuição em grandes operações</p></div>
-      <div class="skill-card"><h4>Excel (em desenvolvimento)</h4><p>Estudando PROCX, SOMASE, Tabelas Dinâmicas e Power Query</p></div>
-      <div class="skill-card"><h4>Git & GitHub</h4><p>Controle de versão e organização de projetos</p></div>
-      <div class="skill-card"><h4>HTML & CSS</h4><p>Montagem de páginas e interfaces simples</p></div>
-      <div class="skill-card"><h4>Resolução de Problemas</h4><p>Abordagem sistemática vinda da rotina de operação</p></div>
-    </div>
-  </section>
-  <section id="projetos" class="container">
-    <h3>Projetos Destacados</h3>
-    <div class="projects-grid">
-      <div class="project-card"><div class="project-header"><h4>Painel de Candidaturas</h4><p style="opacity: 0.9; margin: 0;">Projeto Fênix</p></div><div class="project-body"><p>Ferramenta para organizar e acompanhar candidaturas de vagas durante a transição de carreira.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Organização</span></div><a href="https://github.com/CaiqueGomesn/painel-candidaturas" class="project-link" target="_blank">Ver no GitHub →</a></div></div>
-      <div class="project-card"><div class="project-header"><h4>Prática de Algoritmos</h4><p style="opacity: 0.9; margin: 0;">Aprendizado Contínuo</p></div><div class="project-body"><p>Repositório com exercícios diários de lógica e estruturas de dados em Python.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Algoritmos</span></div><a href="https://github.com/CaiqueGomesn" class="project-link" target="_blank">Ver no GitHub →</a></div></div>
-      <div class="project-card"><div class="project-header"><h4>Site Profissional</h4><p style="opacity: 0.9; margin: 0;">Este site</p></div><div class="project-body"><p>Site responsivo em HTML/CSS puro, construído e mantido por mim, em constante atualização.</p><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div><a href="https://github.com/CaiqueGomesn/caiquegomesn.github.io" class="project-link" target="_blank">Ver no GitHub →</a></div></div>
-    </div>
-  </section>
-  <section id="contato" class="container contact-section">
-    <h3>Vamos Conversar!</h3>
-    <p>Aberto a oportunidades de estágio em Análise de Dados / BI e conversas sobre tecnologia aplicada a operações e dados.</p>
-    <div class="contact-links">
-      <a href="https://github.com/CaiqueGomesn" class="contact-link" target="_blank"><span>🔗</span> GitHub</a>
-      <a href="https://www.linkedin.com/in/caiquegomes/" class="contact-link" target="_blank"><span>💼</span> LinkedIn</a>
-      <a href="mailto:caique2008gomes@gmail.com" class="contact-link"><span>✉️</span> Email</a>
-    </div>
-  </section>
-  <footer><p>&copy; 2026 Caique Gomes. Todos os direitos reservados. | Desenvolvido com ❤️ em código</p></footer>
+    </section>
+
+    <section id="habilidades" class="card-section container">
+      <h3>Habilidades</h3>
+      <div class="skills-grid">
+        <article class="skill-card"><h4>Python (em aprendizado)</h4><p>Lógica de programação, estruturas de dados e scripts</p></article>
+        <article class="skill-card"><h4>Excel (em desenvolvimento)</h4><p>Estudando PROCX, SOMASE, Tabelas Dinâmicas e Power Query</p></article>
+        <article class="skill-card"><h4>Git &amp; GitHub</h4><p>Controle de versão e organização de projetos</p></article>
+        <article class="skill-card"><h4>HTML &amp; CSS</h4><p>Montagem de páginas e interfaces simples</p></article>
+        <article class="skill-card"><h4>Operações &amp; Processos</h4><p>Gestão de fluxo, capacidade e distribuição em grandes operações</p></article>
+        <article class="skill-card"><h4>Resolução de Problemas</h4><p>Abordagem sistemática vinda da rotina de operação</p></article>
+      </div>
+    </section>
+
+    <section id="projetos" class="card-section container">
+      <h3>Projetos</h3>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-header"><h4>Painel de Candidaturas</h4></div>
+          <div class="project-body"><p>CLI em Python para rastreamento de candidaturas a vagas.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Organização</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/painel-candidaturas" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
+        </article>
+        <article class="project-card">
+          <div class="project-header"><h4>Prática de Algoritmos</h4></div>
+          <div class="project-body"><p>Repositório com exercícios de lógica e estruturas de dados em Python.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Algoritmos</span></div><a class="project-link" href="https://github.com/CaiqueGomesn" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
+        </article>
+        <article class="project-card">
+          <div class="project-header"><h4>Site Profissional</h4></div>
+          <div class="project-body"><p>Este site, responsivo, construído e mantido por mim.</p><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div><a class="project-link" href="https://github.com/CaiqueGomesn/caiquegomesn.github.io" target="_blank" rel="noopener noreferrer">Ver projeto →</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" class="card-section container contact-section">
+      <h3>Contato</h3>
+      <p>Aberto a oportunidades de estágio em Análise de Dados / BI e conversas sobre tecnologia aplicada a operações e dados.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/CaiqueGomesn" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/caiquegomes/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="contact-link" href="mailto:caique2008gomes@gmail.com">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>© 2026 Caique Gomes. Todos os direitos reservados.</p></footer>
 </body>
 </html>

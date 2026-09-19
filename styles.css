@@ -1,0 +1,45 @@
+:root {
+  --primary: #0c447c;
+  --primary-strong: #062d55;
+  --ink: #18222d;
+  --muted: #596673;
+  --surface: #ffffff;
+  --soft: #f2f4f6;
+  --line: #c9d2da;
+  --accent: #d8893d;
+  --accent-soft: #fff2e6;
+  --shadow: 0 8px 28px rgba(13, 35, 54, .08);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #edf2f6; --muted: #b4c0ca; --surface: #17222d; --soft: #202d39; --line: #40515f; --primary: #78aeda; --primary-strong: #a9d0ef; --accent: #e8a064; --accent-soft: #3d2d20; --shadow: 0 8px 28px rgba(0,0,0,.22); }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; color: var(--ink); background: var(--soft); font: 1rem/1.6 "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+a { color: inherit; }
+.container { width: min(1120px, calc(100% - 2rem)); margin-inline: auto; }
+.site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--surface) 94%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+.site-header nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.brand { color: var(--primary); font-weight: 800; text-decoration: none; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 1.25rem; list-style: none; font-size: .92rem; font-weight: 600; }
+.nav-links a { text-decoration: none; }
+.nav-links a:hover, .nav-links a:focus-visible, .contact-links a:hover { color: var(--primary); }
+.hero { display: grid; min-height: 540px; place-items: center; padding: 7rem 0; background: var(--primary-strong); color: #fff; }
+.hero-content { max-width: 800px; text-align: center; }
+.eyebrow, .node-kicker, .detail-kicker { color: var(--primary); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.hero .eyebrow { color: #a9c9e5; }
+.hero h1 { margin: .5rem 0 1rem; font-size: clamp(3rem, 8vw, 5.8rem); line-height: 1; }
+.hero-subtitle { font-size: clamp(1.25rem, 3vw, 1.8rem); font-weight: 600; }
+.hero-copy { max-width: 680px; margin: 1.25rem auto 2rem; color: #d7e4ee; font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+.button { display: inline-block; padding: .75rem 1.3rem; border: 1px solid #fff; border-radius: 5px; font-weight: 700; text-decoration: none; transition: background .2s, color .2s, transform .2s; }
+.button:hover, .button:focus-visible { transform: translateY(-2px); }
+.button-primary { background: #fff; color: var(--primary-strong); }.button-quiet { color: #fff; }
+.card-section { margin-block: 2rem; padding: clamp(2rem, 5vw, 4rem); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+.section-heading { max-width: 680px; margin: 0 auto 2.5rem; text-align: center; }.section-heading h2 { margin: .3rem 0 .6rem; color: var(--primary); font-size: clamp(1.8rem, 4vw, 2.5rem); }.section-heading > p:last-child { color: var(--muted); }
+/* O palco mantém o SVG e os botões alinhados sem depender de imagens ou bibliotecas. */
+.ponto-diagram { position: relative; min-height: 430px; margin: 1rem auto; isolation: isolate; }.ponto-connections { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; overflow: visible; color: var(--primary); }.connection { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 7 9; opacity: .4; animation: data-flow 3.8s linear infinite; }.ponto-node { position: absolute; z-index: 1; display: flex; width: 148px; min-height: 92px; flex-direction: column; justify-content: center; padding: .8rem; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; box-shadow: 0 3px 12px rgba(13,35,54,.06); transition: border-color .2s, transform .2s, background .2s; }.ponto-node:hover, .ponto-node:focus-visible, .ponto-node.is-selected { border-color: var(--primary); transform: translateY(-3px); outline: none; }.ponto-node strong { font-size: 1.05rem; line-height: 1.2; }.node-caption { color: var(--muted); font-size: .78rem; }.ponto-inputs .ponto-node:nth-child(1) { top: 3%; left: 5%; }.ponto-inputs .ponto-node:nth-child(2) { top: 39%; left: 5%; }.ponto-inputs .ponto-node:nth-child(3) { top: 75%; left: 5%; }.ponto-core { top: 39%; left: calc(50% - 74px); width: 148px; min-height: 106px; border-color: var(--accent); background: var(--accent-soft); }.ponto-core .node-kicker, .ponto-core strong { color: var(--accent); }.ponto-outputs .ponto-node:nth-child(1) { top: 8%; right: 5%; }.ponto-outputs .ponto-node:nth-child(2) { top: 64%; right: 5%; }.ponto-detail { display: flex; justify-content: space-between; gap: 1rem; margin: 1.5rem auto 0; max-width: 680px; padding: 1.2rem 1.35rem; border: 1px solid var(--line); border-radius: 8px; background: var(--soft); animation: detail-in .35s ease both; }.ponto-detail h3 { margin: .15rem 0 .2rem; color: var(--primary); }.ponto-detail p { color: var(--muted); }.detail-close { align-self: start; border: 0; background: transparent; color: var(--muted); font-size: 1.5rem; cursor: pointer; }.diagram-hint { margin-top: 1rem; color: var(--muted); text-align: center; font-size: .85rem; }
+.about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: center; }.about-grid p { margin-bottom: 1rem; }.stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }.stats div { padding: 1.2rem; background: var(--soft); border-radius: 8px; }.stats strong, .stats span { display: block; }.stats strong { color: var(--primary); font-size: 1.5rem; }.stats span { color: var(--muted); font-size: .9rem; }.simple-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }.simple-grid article { padding: 1.25rem; border: 1px solid var(--line); border-radius: 8px; }.simple-grid h3 { margin-bottom: .45rem; color: var(--primary); }.simple-grid p { color: var(--muted); }.contact-section { text-align: center; }.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; color: var(--primary); font-weight: 700; }.contact-links a { text-decoration: none; } footer { padding: 2rem; background: var(--primary-strong); color: #d7e4ee; text-align: center; }
+@keyframes data-flow { to { stroke-dashoffset: -32; } } @keyframes detail-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 720px) { .site-header nav { flex-direction: column; justify-content: center; padding: .8rem 0; }.ponto-diagram { min-height: 0; padding: 0; }.ponto-connections { display: none; }.ponto-nodes { display: grid; gap: .8rem; }.ponto-node, .ponto-core, .ponto-inputs .ponto-node:nth-child(n), .ponto-outputs .ponto-node:nth-child(n) { position: static; width: 100%; min-height: 78px; }.ponto-inputs, .ponto-outputs { display: grid; grid-template-columns: 1fr; }.ponto-core { margin: 1.25rem 0; }.ponto-core::before, .ponto-core::after { display: block; content: "↓"; margin: -.9rem auto .2rem; color: var(--line); font-size: 1.2rem; }.ponto-core::after { display: none; }.about-grid, .simple-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }.connection, .ponto-detail { animation: none; }.ponto-node { transition: none; } }

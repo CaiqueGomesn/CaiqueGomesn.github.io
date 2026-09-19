@@ -4,124 +4,332 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfólio profissional de Caique Gomes, estudante de Ciência da Computação com foco em Análise de Dados e Automação com Python.">
-  <title>Caique Gomes — Análise de Dados & Automação</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Caique Gomes - Análise de Dados & Automação | Ciência da Computação</title>
+  <style>
+    :root {
+      --primary: #667eea;
+      --secondary: #764ba2;
+      --ink: #20243a;
+      --muted: #4d556b;
+      --surface: #fff;
+      --soft: #f4f6fb;
+      --line: #c7ccd9;
+      --neutral: #667085;
+      --accent: #667eea;
+      --shadow: rgba(21, 25, 59, .16);
+      --star-color: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #edf0ff; --muted: #c2c8dc; --surface: #20243a;
+        --soft: #2b3049; --line: #596078; --neutral: #b4bdd3;
+        --shadow: rgba(0, 0, 0, .3);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--ink); background: linear-gradient(135deg, var(--primary), var(--secondary)); min-height: 100vh; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(15, 17, 30, .96); color: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, .28); }
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    nav h1 { font-size: 1.5rem; white-space: nowrap; }
+    nav ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 1.5rem; list-style: none; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; }
+    nav a:hover, nav a:focus-visible { color: #b9c3ff; }
+
+    .hero { position: relative; isolation: isolate; overflow: hidden; min-height: calc(100vh - 76px); display: grid; place-items: center; color: #fff; text-align: center; padding: clamp(5rem, 12vw, 8rem) 0; }
+    .hero-content { position: relative; z-index: 2; }
+    .starfield { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; }
+    .star { fill: var(--star-color); opacity: .55; transform-box: fill-box; transform-origin: center; }
+    .hero h2 { font-size: clamp(2.4rem, 7vw, 4.3rem); line-height: 1.1; margin-bottom: 1rem; }
+    .hero .subtitle { font-size: clamp(1.05rem, 2.5vw, 1.35rem); font-weight: 600; margin-bottom: 1.5rem; }
+    .hero .description { max-width: 760px; margin: 0 auto 2rem; font-size: 1.08rem; }
+    .button { display: inline-block; margin: .35rem; padding: .85rem 1.7rem; border: 2px solid #fff; border-radius: 999px; background: #fff; color: #3443a2; text-decoration: none; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease; }
+    .button.secondary { background: rgba(255,255,255,.12); color: #fff; }
+    .button:hover, .button:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.25); }
+
+    @keyframes twinkle { 0%, 100% { opacity: .2; transform: scale(.82); } 50% { opacity: 1; transform: scale(1.12); } }
+    @media (prefers-reduced-motion: no-preference) {
+      .star { animation: twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay) infinite; }
+    }
+
+    section.card-section { margin: 2.5rem auto; padding: clamp(2rem, 5vw, 3.5rem); background: var(--surface); border-radius: 16px; box-shadow: 0 8px 24px var(--shadow); }
+    section h3 { color: #4f5fc3; text-align: center; font-size: clamp(1.7rem, 4vw, 2.2rem); margin-bottom: 2rem; }
+    .about-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center; }
+    .about-copy p { margin-bottom: 1rem; font-size: 1.05rem; }
+    .stats { display: grid; gap: 1rem; }
+    .stat { padding: 1.2rem; text-align: center; background: var(--soft); border-radius: 12px; border-top: 4px solid var(--primary); }
+    .stat-number { display: block; color: #4f5fc3; font-size: 2rem; font-weight: 800; }
+    .stat-label { color: var(--muted); font-weight: 600; }
+    .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .skill-card, .project-card { background: var(--soft); border-radius: 12px; overflow: hidden; }
+    .skill-card { padding: 1.35rem; border-left: 4px solid var(--primary); }
+    .skill-card h4 { color: #4f5fc3; margin-bottom: .5rem; }
+    .skill-card p, .project-body p, .route-detail p { color: var(--muted); }
+    .project-card { display: flex; flex-direction: column; box-shadow: 0 3px 12px var(--shadow); }
+    .project-header { padding: 1.35rem; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+    .project-body { display: flex; flex: 1; flex-direction: column; gap: 1rem; padding: 1.35rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tag { padding: .25rem .7rem; border-radius: 999px; background: #dfe4ff; color: #3546a2; font-size: .85rem; font-weight: 700; }
+    .project-link { margin-top: auto; color: #4354b6; font-weight: 700; text-decoration: none; }
+    .project-link:hover, .project-link:focus-visible { text-decoration: underline; }
+
+    .route-intro { max-width: 700px; margin: -.75rem auto 1.5rem; color: var(--muted); text-align: center; }
+    .route-map { position: relative; padding: 1rem 0 0; }
+    .route-map::before { content: ""; position: absolute; top: 3.25rem; left: 16.66%; right: 16.66%; height: 4px; border-radius: 4px; background: var(--line); }
+    .route-progress { position: absolute; z-index: 0; top: 3.25rem; left: 16.66%; width: 0; height: 4px; border-radius: 4px; background: linear-gradient(90deg,var(--primary),var(--secondary)); transition: width .5s ease, height .5s ease; }
+    .route-nodes { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .route-node { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+    .route-node-button { width: 4.5rem; height: 4.5rem; display: grid; place-items: center; border: 6px solid var(--surface); border-radius: 50%; background: var(--neutral); color: #fff; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: transform .2s ease, outline .2s ease, background .2s ease; }
+    .route-node-button:hover, .route-node-button:focus-visible { transform: scale(1.08); outline: 3px solid var(--primary); outline-offset: 3px; }
+    .route-node.is-active .route-node-button, .route-node.is-current .route-node-button { background: var(--accent); box-shadow: 0 0 0 3px var(--accent), 0 8px 18px var(--shadow); }
+    .route-node.is-current .route-node-button { background: linear-gradient(135deg,var(--primary),var(--secondary)); }
+    .route-node-label { margin-top: 1rem; text-align: center; }
+    .route-node-label strong { display: block; font-size: 1.05rem; }
+    .route-node-label span { display: block; color: var(--muted); font-size: .88rem; }
+    .route-detail { display: none; margin: 2rem auto 0; max-width: 780px; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 14px; background: var(--soft); box-shadow: 0 8px 18px rgba(21,25,59,.08); }
+    .route-detail.is-visible { display: block; }
+    .route-detail-content { padding: 1.5rem; }
+    .route-detail-kicker { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .route-detail h4 { margin: .2rem 0 .35rem; font-size: 1.35rem; }
+    .route-detail .detail-subtitle { color: var(--muted); font-weight: 600; margin-bottom: .8rem; }
+    .route-hint { margin-top: 1rem; color: var(--muted); text-align: center; font-size: .9rem; }
+    @keyframes detailIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .contact-section { text-align: center; }
+    .contact-section > p { max-width: 700px; margin: 0 auto 1.8rem; color: var(--muted); font-size: 1.08rem; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    .contact-link { color: #4354b6; font-weight: 700; text-decoration: none; }
+    .contact-link:hover, .contact-link:focus-visible { color: var(--secondary); text-decoration: underline; }
+    footer { margin-top: 3rem; padding: 2rem 1rem; color: #fff; text-align: center; background: rgba(15,17,30,.96); }
+
+    @media (max-width: 800px) {
+      nav { flex-direction: column; justify-content: center; padding: 1rem 0; }
+      nav ul { justify-content: center; gap: .8rem 1rem; }
+      .about-content, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(3,1fr); }
+      .route-map::before { top: 2.25rem; bottom: 2.25rem; left: 2.25rem; right: auto; width: 4px; height: auto; }
+      .route-progress { top: 2.25rem; left: 2.25rem; width: 4px; height: 0; transition: height .5s ease; }
+      .route-nodes { display: flex; flex-direction: column; gap: 1rem; }
+      .route-node { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; align-items: center; }
+      .route-node-button { grid-column: 1; grid-row: 1; }
+      .route-node-label { grid-column: 2; grid-row: 1; margin: 0; text-align: left; }
+    }
+    @media (max-width: 500px) {
+      nav ul { font-size: .9rem; }
+      .hero { min-height: calc(100svh - 100px); padding: 4rem 0; }
+      .stats { grid-template-columns: 1fr; }
+      section.card-section { margin: 1.5rem auto; padding: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .route-node-button, .route-progress, .route-detail { transition: none; animation: none; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
+  <header>
     <nav class="container" aria-label="Navegação principal">
-      <a class="brand" href="#inicio">Caique Gomes</a>
-      <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#rota">A Rota</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contato">Contato</a></li>
+      <h1>Caique Gomes</h1>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li><li><a href="#rota">A Rota</a></li><li><a href="#habilidades">Habilidades</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
-    <section class="hero" id="inicio">
+    <section class="hero">
+      <svg class="starfield" id="starfield" aria-hidden="true" focusable="false" preserveAspectRatio="none"></svg>
       <div class="container hero-content">
-        <p class="eyebrow">Ciência da Computação · Dados · Automação</p>
-        <h1>Caique Gomes</h1>
-        <p class="hero-subtitle">Transformando experiência operacional em sistemas mais inteligentes.</p>
-        <p class="hero-copy">Estudante de Ciência da Computação com foco em Análise de Dados e automação com Python. Construo essa base técnica sobre 6+ anos de experiência real em operações logísticas.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#rota">Conheça o PONTO</a>
-          <a class="button button-quiet" href="#contato">Vamos conversar</a>
+        <h2>Caique Gomes</h2>
+        <p class="subtitle">Estudante de Ciência da Computação | Análise de Dados e Automação com Python</p>
+        <p class="description">Estudante de Ciência da Computação com foco em Análise de Dados e automação com Python. Construo essa base técnica sobre 6+ anos de experiência real em operações logísticas, combinando visão operacional com raciocínio analítico e interesse por automação.</p>
+        <a class="button" href="#contato">Vamos Conversar</a><a class="button secondary" href="#sobre">Saiba Mais</a>
+      </div>
+    </section>
+
+    <section id="rota" class="card-section container">
+      <h3>A Rota</h3>
+      <p class="route-intro">Um diagrama vivo da jornada: selecione uma parada para visualizar o aprendizado que ela trouxe e como cada etapa conecta a próxima.</p>
+      <div class="route-map" data-route-map>
+        <div class="route-progress" data-route-progress aria-hidden="true"></div>
+        <div class="route-nodes" role="tablist" aria-label="Etapas da carreira">
+          <div class="route-node" data-route-node="0">
+            <button class="route-node-button" type="button" role="tab" aria-selected="false" aria-controls="route-detail-0" id="route-tab-0">01</button>
+            <div class="route-node-label"><strong>Logística</strong><span>base operacional</span></div>
+          </div>
+          <div class="route-node" data-route-node="1">
+            <button class="route-node-button" type="button" role="tab" aria-selected="false" aria-controls="route-detail-1" id="route-tab-1">02</button>
+            <div class="route-node-label"><strong>Dados</strong><span>criação de visão</span></div>
+          </div>
+          <div class="route-node is-current" data-route-node="2">
+            <button class="route-node-button" type="button" role="tab" aria-selected="true" aria-controls="route-detail-2" id="route-tab-2">03</button>
+            <div class="route-node-label"><strong>Atual</strong><span>analise e automação</span></div>
+          </div>
+        </div>
+      </div>
+
+      <article class="route-detail" id="route-detail-0" role="tabpanel" aria-labelledby="route-tab-0">
+        <div class="route-detail-content">
+          <span class="route-detail-kicker">Parada 01 · Base</span>
+          <h4>Logística e operação</h4>
+          <div class="detail-subtitle">Minha formação prática começou no chão do processo.</div>
+          <p>Foi nessa rotina que desenvolvi atenção aos detalhes, senso de prioridade e entendimento real de como fluxos impactam pessoas, tempo e resultado.</p>
+        </div>
+      </article>
+
+      <article class="route-detail" id="route-detail-1" role="tabpanel" aria-labelledby="route-tab-1">
+        <div class="route-detail-content">
+          <span class="route-detail-kicker">Parada 02 · Expansão</span>
+          <h4>Raciocínio analítico</h4>
+          <div class="detail-subtitle">A transição começou com a busca por padrões.</div>
+          <p>Ao observar problemas recorrentes e métricas do processo, fiquei curioso sobre como transformar dados operacionais em clareza para decisão.</p>
+        </div>
+      </article>
+
+      <article class="route-detail is-visible" id="route-detail-2" role="tabpanel" aria-labelledby="route-tab-2">
+        <div class="route-detail-content">
+          <span class="route-detail-kicker">Parada 03 · Atual</span>
+          <h4>Ciência da Computação + automação</h4>
+          <div class="detail-subtitle">Hoje, o foco é unir operação, dados e tecnologia.</div>
+          <p>Estou construindo uma base sólida em programação e análise para transformar processos operacionais em soluções mais inteligentes, automatizadas e escaláveis.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="sobre" class="card-section container">
+      <h3>Sobre Mim</h3>
+      <div class="about-content">
+        <div class="about-copy">
+          <p>Atuo como Assistente de Operações Logísticas no Grupo DPSP (Drogarias Pacheco), onde acompanho de perto os processos internos, o fluxo de trabalho e os desafios práticos da operação.</p>
+          <p>Minha trajetória combina vivência real em logística com interesse crescente por análise de dados, automação e tecnologia aplicada ao processo. Essa combinação me move a buscar soluções que tragam mais eficiência e clareza.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="stat-number">6+</span><span class="stat-label">anos de experiência operacional</span></div>
+          <div class="stat"><span class="stat-number">Python</span><span class="stat-label">em aprendizado contínuo</span></div>
+          <div class="stat"><span class="stat-number">Dados</span><span class="stat-label">como ferramenta de decisão</span></div>
+          <div class="stat"><span class="stat-number">Automação</span><span class="stat-label">como caminho de melhoria</span></div>
         </div>
       </div>
     </section>
 
-    <section class="card-section container" id="rota">
-      <div class="section-heading">
-        <p class="eyebrow">A Rota · PONTO</p>
-        <h2>Da operação à decisão</h2>
-        <p>Uma visão da plataforma conceito PONTO: integra dados operacionais para transformar informação dispersa em ação inteligente.</p>
+    <section id="habilidades" class="card-section container">
+      <h3>Habilidades</h3>
+      <div class="skills-grid">
+        <article class="skill-card"><h4>Python (em aprendizado)</h4><p>Lógica de programação, estruturas de dados e automação.</p></article>
+        <article class="skill-card"><h4>Análise de Dados</h4><p>Leitura, organização e interpretação de informações para apoiar decisões.</p></article>
+        <article class="skill-card"><h4>Operação e logística</h4><p>Visão prática de processos, gargalos e melhoria contínua.</p></article>
       </div>
-
-      <div class="diagram-shell" data-diagram-shell>
-        <svg class="diagram-svg" viewBox="0 0 1200 440" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <defs>
-            <marker id="flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
-            </marker>
-          </defs>
-
-          <g class="flow-layer">
-            <path class="flow-line" d="M 255 100 C 340 100, 370 180, 470 205" marker-end="url(#flow-arrow)"/>
-            <path class="flow-line" d="M 255 220 C 345 220, 385 220, 470 220" marker-end="url(#flow-arrow)"/>
-            <path class="flow-line" d="M 255 340 C 340 340, 370 258, 470 235" marker-end="url(#flow-arrow)"/>
-            <path class="flow-line" d="M 710 220 C 800 220, 850 140, 945 140" marker-end="url(#flow-arrow)"/>
-            <path class="flow-line" d="M 710 220 C 810 220, 850 300, 945 300" marker-end="url(#flow-arrow)"/>
-          </g>
-        </svg>
-
-        <button class="ponto-node node-left node-wms" type="button" data-ponto-node="wms" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Entrada 01</span>
-          <strong>WMS</strong>
-          <span class="node-caption">Estoque e fluxo</span>
-        </button>
-
-        <button class="ponto-node node-left node-qms" type="button" data-ponto-node="qms" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Entrada 02</span>
-          <strong>QMS</strong>
-          <span class="node-caption">Qualidade e desvios</span>
-        </button>
-
-        <button class="ponto-node node-left node-operacao" type="button" data-ponto-node="operacao" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Entrada 03</span>
-          <strong>Operação</strong>
-          <span class="node-caption">Rotina e contexto</span>
-        </button>
-
-        <button class="ponto-node node-core" type="button" data-ponto-node="integracao" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Núcleo</span>
-          <strong>Análise em tempo real</strong>
-          <span class="node-caption">Integração</span>
-        </button>
-
-        <button class="ponto-node node-right node-decisao" type="button" data-ponto-node="decisoes" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Saída 01</span>
-          <strong>Decisões precisas</strong>
-          <span class="node-caption">Clareza para agir</span>
-        </button>
-
-        <button class="ponto-node node-right node-automacao" type="button" data-ponto-node="automacao" aria-expanded="false" aria-controls="ponto-detail">
-          <span class="node-kicker">Saída 02</span>
-          <strong>Automação</strong>
-          <span class="node-caption">Menos esforço manual</span>
-        </button>
-      </div>
-
-      <aside class="ponto-detail" id="ponto-detail" aria-live="polite" hidden>
-        <div>
-          <span class="detail-kicker" data-detail-kicker></span>
-          <h3 data-detail-title></h3>
-          <p data-detail-copy></p>
-        </div>
-        <button class="detail-close" type="button" aria-label="Fechar detalhes">×</button>
-      </aside>
-
-      <p class="diagram-hint">Selecione um ponto da arquitetura para entender seu papel.</p>
     </section>
 
-    <section class="card-section container" id="sobre">
-      <div class="section-heading"><p class="eyebrow">Contexto</p><h2>Sobre mim</h2></div>
-      <div class="about-grid"><div><p>Atuo como Assistente de Operações Logísticas no Grupo DPSP, onde acompanho de perto processos, fluxos e desafios de transformar informação em rotina eficiente.</p><p>Minha transição para dados nasce desse ponto: entender o problema na origem e criar soluções que ajudem pessoas a decidir melhor.</p></div><div class="stats"><div><strong>6+</strong><span>anos em operações</span></div><div><strong>Python</strong><span>em construção</span></div></div></div>
+    <section id="projetos" class="card-section container">
+      <h3>Projetos</h3>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-header"><h4>Painel de Candidaturas</h4></div>
+          <div class="project-body">
+            <p>Projeto voltado para organizar oportunidades, acompanhar processos e tornar o acompanhamento visual mais claro.</p>
+            <div class="project-tags">
+              <span class="tag">Dashboard</span>
+              <span class="tag">Dados</span>
+              <span class="tag">UX</span>
+            </div>
+            <a class="project-link" href="#contato">Entender a ideia</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header"><h4>PONTO</h4></div>
+          <div class="project-body">
+            <p>Plataforma conceito para integração de dados operacionais e apoio à tomada de decisão em tempo real.</p>
+            <div class="project-tags">
+              <span class="tag">Arquitetura</span>
+              <span class="tag">Integração</span>
+              <span class="tag">Inteligência</span>
+            </div>
+            <a class="project-link" href="#rota">Ver arquitetura</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header"><h4>Automação</h4></div>
+          <div class="project-body">
+            <p>Exploração de processos repetitivos que podem ser simplificados com lógica e ferramentas inteligentes.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Processos</span>
+              <span class="tag">Eficiência</span>
+            </div>
+            <a class="project-link" href="#contato">Falar sobre</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="card-section container" id="habilidades"><div class="section-heading"><p class="eyebrow">Base técnica</p><h2>Habilidades</h2></div><div class="simple-grid"><article><h3>Python</h3><p>Lógica de programação, estruturas de dados e automação em aprendizado contínuo.</p></article><article><h3>Análise de dados</h3><p>Organização, leitura e comunicação de informações para apoiar decisões.</p></article><article><h3>Visão operacional</h3><p>Experiência prática para identificar gargalos e oportunidades reais.</p></article></div></section>
-
-    <section class="card-section container" id="projetos"><div class="section-heading"><p class="eyebrow">Construindo</p><h2>Projetos</h2></div><div class="simple-grid"><article><h3>PONTO</h3><p>Plataforma conceito para integração de dados operacionais em tempo real.</p></article><article><h3>Painel de Candidaturas</h3><p>Organização visual de oportunidades e acompanhamento de processos.</p></article></div></section>
-
-    <section class="card-section container contact-section" id="contato"><div class="section-heading"><p class="eyebrow">Contato</p><h2>Vamos conversar?</h2><p>Aberto a oportunidades para aprender, colaborar e transformar problemas operacionais em soluções com dados.</p></div><div class="contact-links"><a href="mailto:caiquegomesn@gmail.com">E-mail</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/CaiqueGomesn" target="_blank" rel="noreferrer">GitHub</a></div></section>
+    <section id="contato" class="card-section container" style="text-align:center;">
+      <h3>Contato</h3>
+      <p style="max-width:700px;margin:0 auto 1.8rem;color:var(--muted);font-size:1.08rem;">Aberto a oportunidades para colaborar, aprender e transformar desafios operacionais em soluções com dados e automação.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:caiquegomesn@gmail.com">Email</a>
+        <a class="contact-link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="contact-link" href="https://github.com/CaiqueGomesn" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
   </main>
-
   <footer><p>© 2026 Caique Gomes. Todos os direitos reservados.</p></footer>
 
-  <script src="script.js" defer></script>
+  <script>
+    const starfield = document.getElementById('starfield');
+    const STAR_COUNT = 110;
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const random = (min, max) => Math.random() * (max - min) + min;
+    starfield.setAttribute('viewBox', '0 0 100 100');
+
+    for (let index = 0; index < STAR_COUNT; index += 1) {
+      const star = document.createElementNS(SVG_NS, 'circle');
+      star.classList.add('star');
+      star.setAttribute('cx', random(0, 100).toFixed(2));
+      star.setAttribute('cy', random(0, 100).toFixed(2));
+      star.setAttribute('r', random(.5, 2).toFixed(2));
+      star.style.setProperty('--twinkle-duration', `${random(2.5, 6).toFixed(2)}s`);
+      star.style.setProperty('--twinkle-delay', `${random(-6, 0).toFixed(2)}s`);
+      starfield.appendChild(star);
+    }
+
+    const nodes = [...document.querySelectorAll('[data-route-node]')];
+    const progress = document.querySelector('[data-route-progress]');
+    const details = [...document.querySelectorAll('.route-detail')];
+
+    function selectRoute(index) {
+      nodes.forEach((node, current) => {
+        const button = node.querySelector('.route-node-button');
+        const selected = current === index;
+        node.classList.toggle('is-active', selected);
+        node.classList.toggle('is-current', selected);
+        button.setAttribute('aria-selected', String(selected));
+        button.tabIndex = selected ? 0 : -1;
+      });
+
+      details.forEach((detail, current) => detail.classList.toggle('is-visible', current === index));
+      progress.style.width = `${index * 50}%`;
+      progress.style.height = `${index * 50}%`;
+    }
+
+    nodes.forEach((node, index) => {
+      const button = node.querySelector('.route-node-button');
+      button.addEventListener('click', () => selectRoute(index));
+      button.addEventListener('keydown', (event) => {
+        const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 0;
+        if (direction) {
+          event.preventDefault();
+          const next = (index + direction + nodes.length) % nodes.length;
+          selectRoute(next);
+          nodes[next].querySelector('button').focus();
+        }
+      });
+    });
+
+    selectRoute(2);
+  </script>
 </body>
 </html>

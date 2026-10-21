@@ -429,7 +429,7 @@ textarea {
   .card,
   .project-card,
   .about__content {
-    animation: reveal linear both;
+    animation: reveal linear backwards;
     animation-timeline: view();
     animation-range: entry 0% entry 40%;
   }

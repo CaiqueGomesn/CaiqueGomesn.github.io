@@ -239,7 +239,14 @@ textarea {
   margin: 0;
   color: var(--color-muted);
 }
+.card__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+.card__list li + li { margin-top: 0.4rem; }
 
+section[id] { scroll-margin-top: 90px; }
 /* Sobre */
 .about {
   display: grid;

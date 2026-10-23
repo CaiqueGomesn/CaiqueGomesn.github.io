@@ -1,3 +1,10 @@
+/* =========================================================
+   styles.css — feito pro HTML semântico (header, nav, main,
+   section, article, footer). Quase sem classe: o CSS se
+   prende nas tags e nos ids (#sobre, #rota, #habilidades...).
+   ========================================================= */
+
+/* ---------- 1. VARIÁVEIS (mude cores e espaços aqui) ---------- */
 :root {
   --color-bg: #f4f7fb;
   --color-surface: #ffffff;
@@ -21,8 +28,12 @@
 
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
   --container-width: 1100px;
+
+  /* margem lateral que centraliza o conteúdo sem precisar de <div class="container"> */
+  --gutter: max(1rem, calc((100% - var(--container-width)) / 2));
 }
 
+/* ---------- 2. BASE ---------- */
 *,
 *::before,
 *::after {
@@ -31,6 +42,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* o menu fixo não cobre o título da seção */
 }
 
 body {
@@ -51,400 +63,425 @@ a {
   text-decoration: none;
 }
 
-button,
-input,
-textarea {
-  font: inherit;
+a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-.container {
-  width: min(var(--container-width), calc(100% - 2rem));
-  margin-inline: auto;
-}
-
-/* Estrutura do site */
-.site-header {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+/* ---------- 3. MENU ---------- */
+header {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-inline: var(--gutter);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.site-header__inner {
+header nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 72px;
   gap: var(--spacing-4);
+  min-height: 72px;
 }
 
-.site-brand {
+.brand {
+  margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
 }
 
-.site-nav {
+nav ul {
   display: flex;
-  align-items: center;
   gap: var(--spacing-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.site-nav__link {
+nav a {
+  position: relative;
   color: var(--color-muted);
+  padding-block: 0.25rem;
   transition: color 0.2s ease;
 }
 
-.site-nav__link:hover,
-.site-nav__link:focus-visible {
-  color: var(--color-primary);
-}
-
-/* Conteúdo principal */
-.site-main {
-  display: block;
-}
-
-.section {
-  padding: var(--spacing-6) 0;
-}
-
-.section__header {
-  margin-bottom: var(--spacing-5);
-  text-align: center;
-}
-
-.section__eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-1);
-}
-
-.section__title {
-  margin: 0;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.2;
-}
-
-.section__subtitle {
-  max-width: 700px;
-  margin: 0.75rem auto 0;
-  color: var(--color-muted);
-  font-size: 1.05rem;
-}
-
-/* Hero */
-.hero {
-  padding-top: var(--spacing-6);
-  padding-bottom: var(--spacing-6);
-}
-
-.hero__content {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--spacing-5);
-  align-items: center;
-}
-
-.hero__title {
-  margin: 0 0 var(--spacing-3);
-  font-size: clamp(2.3rem, 5vw, 4rem);
-  line-height: 1.1;
-}
-
-.hero__description {
-  margin: 0 0 var(--spacing-4);
-  color: var(--color-muted);
-  font-size: 1.08rem;
-  max-width: 620px;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-3);
-}
-
-.hero__media {
-  min-height: 360px;
-  background: linear-gradient(135deg, #dbeafe, #fef3c7);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Botões */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  padding: 0.85rem 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn--primary {
-  background: var(--color-primary);
-  color: #fff;
-}
-
-.btn--primary:hover,
-.btn--primary:focus-visible {
-  background: var(--color-primary-dark);
-}
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-text);
-  border-color: var(--color-border);
-}
-
-.btn--secondary:hover,
-.btn--secondary:focus-visible {
-  background: var(--color-surface);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-/* Cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: var(--spacing-4);
-}
-
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-4);
-  box-shadow: var(--shadow-soft);
-}
-
-.card__title {
-  margin: 0 0 var(--spacing-2);
-  font-size: 1.2rem;
-}
-
-.card__text {
-  margin: 0;
-  color: var(--color-muted);
-}
-.card__list {
-  margin: 0;
-  padding-left: 1.1rem;
-  color: var(--color-muted);
-}
-.card__list li + li { margin-top: 0.4rem; }
-
-section[id] { scroll-margin-top: 90px; }
-/* Sobre */
-.about {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: var(--spacing-5);
-  align-items: center;
-}
-
-.about__image {
-  min-height: 320px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-}
-
-.about__content p {
-  margin: 0 0 var(--spacing-3);
-  color: var(--color-muted);
-}
-
-/* Projetos */
-.project-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-}
-
-.project-card__image {
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, #dbeafe, #fef3c7);
-}
-
-.project-card__body {
-  padding: var(--spacing-4);
-}
-
-.project-card__meta {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-2);
-}
-
-.project-card__title {
-  margin: 0 0 var(--spacing-2);
-  font-size: 1.35rem;
-}
-
-.project-card__description {
-  margin: 0 0 var(--spacing-3);
-  color: var(--color-muted);
-}
-
-.project-card__link {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-/* Contato */
-.contact {
-  text-align: center;
-}
-
-.contact__list {
-  list-style: none;
-  padding: 0;
-  margin: var(--spacing-4) 0 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-3);
-}
-
-.contact__item {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 0.75rem 1rem;
-}
-
-/* Rodapé */
-.site-footer {
-  background: #111827;
-  color: #f9fafb;
-  padding: var(--spacing-4) 0;
-}
-
-.site-footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-3);
-  flex-wrap: wrap;
-}
-
-.site-footer__text {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-@media (max-width: 768px) {
-  .site-header__inner,
-  .hero__content,
-  .about {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .site-header__inner {
-    min-height: auto;
-    padding: var(--spacing-3) 0;
-  }
-
-  .site-nav {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
-}
-
-/* 1. Entrada do hero */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.hero__title       { animation: fade-up 0.7s ease both; }
-.hero__description { animation: fade-up 0.7s ease 0.15s both; }
-.hero__actions     { animation: fade-up 0.7s ease 0.3s both; }
-
-/* 2. Hero media flutuando */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
-}
-.hero__media { animation: float 6s ease-in-out infinite; }
-
-/* 3. Cards com elevação */
-.card,
-.project-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover,
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.15);
-}
-
-/* 4. Link do menu com sublinhado animado */
-.site-nav__link { position: relative; }
-.site-nav__link::after {
+/* sublinhado que cresce da esquerda pra direita */
+nav a::after {
   content: "";
   position: absolute;
-  left: 0; bottom: -4px;
-  width: 100%; height: 2px;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
   background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
 }
-.site-nav__link:hover::after { transform: scaleX(1); }
 
-/* 5. Botão com leve "pulo" */
-.btn:hover { transform: translateY(-2px); }
+nav a:hover,
+nav a:focus-visible {
+  color: var(--color-primary);
+}
 
-/* 6. Seções aparecendo no scroll (sem JavaScript) */
+nav a:hover::after,
+nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- 4. SEÇÕES (regras gerais) ---------- */
+section {
+  padding: var(--spacing-6) var(--gutter);
+}
+
+h2 {
+  position: relative;
+  margin: 0 0 var(--spacing-5);
+  padding-bottom: 0.75rem;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1.2;
+}
+
+/* barrinha embaixo de cada título */
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+h3 {
+  margin: 0 0 var(--spacing-1);
+  font-size: 1.2rem;
+}
+
+section p {
+  max-width: 70ch;
+  margin: 0 0 var(--spacing-3);
+  color: var(--color-muted);
+}
+
+/* ---------- 5. HERO ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 6rem 5rem;
+}
+
+.hero h1 {
+  margin: 0 0 var(--spacing-3);
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  animation: fade-up 0.7s ease both;
+}
+
+.hero p {
+  max-width: 620px;
+  font-size: 1.15rem;
+  animation: fade-up 0.7s ease 0.15s both;
+}
+
+/* duas "bolhas" de cor flutuando atrás do texto (sem HTML extra) */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.85;
+}
+
+.hero::before {
+  width: 420px;
+  height: 420px;
+  right: -80px;
+  top: -60px;
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+  width: 260px;
+  height: 260px;
+  left: -60px;
+  bottom: -80px;
+  background: linear-gradient(135deg, #fef3c7, #dbeafe);
+  animation: float 10s ease-in-out -3s infinite;
+}
+
+/* ---------- 6. SOBRE / A ROTA ---------- */
+#sobre p:first-of-type {
+  padding-left: var(--spacing-3);
+  border-left: 4px solid var(--color-accent);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ---------- 7. HABILIDADES ---------- */
+#habilidades ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-2);
+  list-style: none;
+  margin: 0 0 var(--spacing-5);
+  padding: 0;
+}
+
+#habilidades li {
+  position: relative;
+  padding: var(--spacing-2) var(--spacing-3) var(--spacing-2) 2.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+#habilidades li::before {
+  content: "✓";
+  position: absolute;
+  left: var(--spacing-3);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+#habilidades li:hover {
+  transform: translateX(6px);
+  border-color: var(--color-primary);
+}
+
+/* ---------- 8. PROJETOS ---------- */
+#projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+  align-items: start;
+}
+
+#projetos h2 {
+  grid-column: 1 / -1;
+  margin-bottom: var(--spacing-2);
+}
+
+article {
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* faixa colorida que aparece no topo do card no hover */
+article::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.15);
+}
+
+article:hover::before {
+  transform: scaleX(1);
+}
+
+article em {
+  color: var(--color-muted);
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+article a {
+  position: relative;
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+article a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+article a:hover::after,
+article a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- 9. CONTATO ---------- */
+#contato {
+  text-align: center;
+}
+
+#contato h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#contato ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#contato a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease,
+              border-color 0.2s ease, transform 0.2s ease;
+}
+
+#contato a:hover,
+#contato a:focus-visible {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ---------- 10. RODAPÉ ---------- */
+footer {
+  padding: var(--spacing-4) var(--gutter);
+  background: #111827;
+  color: #f9fafb;
+}
+
+footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- 11. CELULAR ---------- */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 130px;
+  }
+
+  header nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-2);
+    min-height: auto;
+    padding-block: var(--spacing-3);
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-1) var(--spacing-4);
+  }
+
+  .hero {
+    padding-block: 4rem 3rem;
+  }
+
+  .hero::before {
+    width: 260px;
+    height: 260px;
+    right: -110px;
+  }
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-18px); }
+}
+
 @keyframes reveal {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Só roda onde o navegador entende (Chrome/Edge). No resto, o conteúdo
+   aparece normal, nada quebra. */
 @supports (animation-timeline: view()) {
-  .section__header,
-  .card,
-  .project-card,
-  .about__content {
+
+  /* Conteúdo aparece conforme você rola a página.
+     "backwards" (e não "both") é de propósito: depois que o efeito acaba,
+     o hover dos cards volta a funcionar. */
+  section:not(.hero) > h2,
+  section:not(.hero) > h3,
+  section:not(.hero) > p,
+  article,
+  #habilidades li,
+  #contato li {
     animation: reveal linear backwards;
     animation-timeline: view();
     animation-range: entry 0% entry 40%;
   }
+
+  /* Barra no topo que enche conforme você avança na "rota" */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 20;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform-origin: left;
+    animation: progress linear both;
+    animation-timeline: scroll(root);
+  }
 }
 
-/* Acessibilidade: desliga tudo pra quem prefere menos movimento */
+/* Quem prefere menos movimento no sistema não vê animação nenhuma */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }
